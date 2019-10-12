@@ -31,12 +31,6 @@ public class Drag : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else
-        {
-            Debug.Log("Slabo!");
-            Debug.Log(down.y-up.y);
-
-        }
     }
 
     void OnMouseDown()

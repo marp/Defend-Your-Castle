@@ -4,96 +4,36 @@ using UnityEngine;
 
 public class Castle : MonoBehaviour
 {
-    [Header("Walls sprites")]
-    [SerializeField] int wallsLevel = 1;
-    [SerializeField] Sprite walls1;
-    [SerializeField] Sprite walls2;
-    [SerializeField] Sprite walls3;
-    [SerializeField] Sprite walls4;
-    [SerializeField] Sprite walls5;
-    [SerializeField] Sprite walls6;
-    [SerializeField] Sprite walls7;
-    [SerializeField] Sprite walls8;
-    [SerializeField] Sprite walls9;
-    [SerializeField] Sprite walls10;
-    [SerializeField] Sprite walls11;
-    [SerializeField] Sprite walls12;
-    [SerializeField] Sprite walls13;
-    [SerializeField] Sprite walls14;
-    [SerializeField] Sprite walls15;
-    [SerializeField] Sprite walls16;
-    [SerializeField] Sprite walls17;
-    [SerializeField] Sprite walls18;
-    [SerializeField] Sprite walls19;
-    [SerializeField] Sprite walls20;
+    public int level = 1;
+    [Header("Front sprites")]
+    [SerializeField] Sprite[] frontWalls;
 
-    [Header("Base sprites")]
-    [SerializeField] int baseLevel = 1;
-    [SerializeField] Sprite base1;
-    [SerializeField] Sprite base2;
-    [SerializeField] Sprite base3;
-    [SerializeField] Sprite base4;
-    [SerializeField] Sprite base5;
-    [SerializeField] Sprite base6;
-    [SerializeField] Sprite base7;
+    [Header("Rear sprites")]
+    [SerializeField] Sprite[] rearWalls;
 
     public void UpgradeCastle()
     {
-        wallsLevel++;
-        baseLevel++;
-        UpdateCastle();
+        if ((level < frontWalls.Length) && (level < rearWalls.Length))
+        {
+            level++;
+            UpdateCastle();
+        }
     }
 
     public void DowngradeCastle()
     {
-        wallsLevel--;
-        baseLevel--;
-        UpdateCastle();
+        if (level >= 2 )
+        {
+            level--;
+            UpdateCastle();
+        }
+       
 
     }
     private void UpdateCastle()
-    {
-        if (wallsLevel == 1 && baseLevel == 1)
-        {
-            this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = base1;
-            this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = walls1;
-        }
-
-        if (wallsLevel == 2 && baseLevel == 2)
-        {
-            this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = base2;
-            this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = walls2;
-        }
-
-        if (wallsLevel == 3 && baseLevel == 3)
-        {
-            this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = base3;
-            this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = walls3;
-        }
-
-        if (wallsLevel == 4 && baseLevel == 4)
-        {
-            this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = base4;
-            this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = walls4;
-        }
-
-        if (wallsLevel == 5 && baseLevel == 5)
-        {
-            this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = base5;
-            this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = walls5;
-        }
-
-        if (wallsLevel == 6 && baseLevel == 6)
-        {
-            this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = base6;
-            this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = walls6;
-        }
-
-        if (wallsLevel == 7 && baseLevel == 7)
-        {
-            this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = base7;
-            this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = walls7;
-        }
+    { 
+            this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = rearWalls[level-1];
+            this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = frontWalls[level-1];
     }
     void Start()
     {

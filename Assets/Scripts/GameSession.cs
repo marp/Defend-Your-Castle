@@ -5,7 +5,10 @@ using UnityEngine;
 public class GameSession : MonoBehaviour
 {
     [SerializeField] int score = 0;
+    [SerializeField] int health = 0;
     [SerializeField] GameObject enemyPrefab;
+    [SerializeField] GameObject shop;
+    [SerializeField] bool shopVisible = false;
     public int GetScore()
     {
         return score;
@@ -29,6 +32,25 @@ public class GameSession : MonoBehaviour
 
             Instantiate(enemyPrefab, spawnEnemyPos, Quaternion.identity);
         }
-    }
 
+        if (shopVisible)
+        {
+            shop.SetActive(true);
+        }
+        else
+        {
+            shop.SetActive(false);
+        }
+    }
+    public void ToggleShop()
+    {
+        if (shopVisible)
+        {
+            shopVisible = false;
+        }
+        else
+        {
+            shopVisible = true;
+        }
+    }
 }

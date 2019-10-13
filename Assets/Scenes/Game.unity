@@ -857,6 +857,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 1229995836}
   shop: {fileID: 1585174275}
   shopVisible: 0
+  stageText: {fileID: 265361445}
+  stage: 1
 --- !u!4 &527896408
 Transform:
   m_ObjectHideFlags: 0
@@ -1764,7 +1766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1585174276
 RectTransform:
   m_ObjectHideFlags: 0

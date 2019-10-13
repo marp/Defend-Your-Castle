@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameSession : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameSession : MonoBehaviour
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] GameObject shop;
     [SerializeField] bool shopVisible = false;
+    [SerializeField] TextMeshProUGUI stageText;
+    [SerializeField] int stage = 1;
     public int GetScore()
     {
         return score;
@@ -20,7 +23,7 @@ public class GameSession : MonoBehaviour
 
     void Start()
     {
-        
+        changeShopVisibility();
     }
 
     void Update()
@@ -32,15 +35,8 @@ public class GameSession : MonoBehaviour
 
             Instantiate(enemyPrefab, spawnEnemyPos, Quaternion.identity);
         }
+        stageText.text = "Stage "+stage;
 
-        if (shopVisible)
-        {
-            shop.SetActive(true);
-        }
-        else
-        {
-            shop.SetActive(false);
-        }
     }
     public void ToggleShop()
     {
@@ -51,6 +47,20 @@ public class GameSession : MonoBehaviour
         else
         {
             shopVisible = true;
+        }
+        changeShopVisibility();
+    }
+
+    public void changeShopVisibility()
+    {
+
+        if (shopVisible)
+        {
+            shop.SetActive(true);
+        }
+        else
+        {
+            shop.SetActive(false);
         }
     }
 }

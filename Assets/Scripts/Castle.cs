@@ -35,6 +35,14 @@ public class Castle : MonoBehaviour
             this.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = rearWalls[level-1];
             this.gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = frontWalls[level-1];
     }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("kolizja");
+        col.gameObject.GetComponent<Animator>().SetTrigger("fighting");
+        //////col.GetComponent<Animator>().SetTrigger("fighting");
+    }
+
     void Start()
     {
         

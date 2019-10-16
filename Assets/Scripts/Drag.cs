@@ -7,6 +7,8 @@ using UnityEngine;
 public class Drag : MonoBehaviour
 {
 
+    public Animator anim;
+
     private Vector3 screenPoint;
     private Vector3 offset;
 
@@ -15,9 +17,11 @@ public class Drag : MonoBehaviour
 
     [SerializeField,Range(1f,10f)] float fallingLimit = 5f;
 
+    public bool fallingDown = false;
+
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -29,8 +33,17 @@ public class Drag : MonoBehaviour
     {
         if ((down.y - up.y) > fallingLimit)
         {
-            Destroy(gameObject);
+            anim.SetTrigger("death");
         }
+        else
+        {
+            if (fallingDown)
+            {
+                anim.SetTrigger("gettingUp");
+                fallingDown = false;
+            }
+        }
+        Debug.Log(fallingDown);
     }
 
     void OnMouseDown()
@@ -42,6 +55,7 @@ public class Drag : MonoBehaviour
     void OnMouseUp()
     {
         down = transform.position;
+        fallingDown = true;
     }
 
     void OnMouseDrag()
@@ -49,5 +63,12 @@ public class Drag : MonoBehaviour
         Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
         Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
         transform.position = curPosition;
+    }
+
+    //after death animation
+    public void RemoveDeadBody()
+    {
+        Destroy(gameObject);
+
     }
 }

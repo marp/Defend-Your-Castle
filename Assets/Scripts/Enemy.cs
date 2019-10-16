@@ -13,14 +13,9 @@ public class Enemy : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
+    {
+        transform.rotation = Quaternion.identity;
         float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, castle.transform.position, step);
-
-        if (Vector3.Distance(transform.position, castle.transform.position) < 0.001f)
-        {
-            // Swap the position of the cylinder.
-            castle.transform.position *= -1.0f;
-        }
+        transform.Translate(Vector2.right * step);
     }
 }

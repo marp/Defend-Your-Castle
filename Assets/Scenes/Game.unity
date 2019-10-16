@@ -415,6 +415,7 @@ GameObject:
   m_Component:
   - component: {fileID: 351976939}
   - component: {fileID: 351976940}
+  - component: {fileID: 351976941}
   m_Layer: 0
   m_Name: Castle
   m_TagString: Untagged
@@ -430,7 +431,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351976938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.33, y: -0.79, z: 0}
+  m_LocalPosition: {x: 4.33, y: -1.64, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 933585056}
@@ -495,6 +496,32 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4e001550e9d85f546abeca6f2f5122d2, type: 3}
   - {fileID: 21300000, guid: e471168d56a54304c863709056ab4f4b, type: 3}
   - {fileID: 21300000, guid: 92fd5f3f3c6f56649b7201cb1e8062c3, type: 3}
+--- !u!61 &351976941
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351976938}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.109725356, y: -1.52}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.9005492, y: 2}
+  m_EdgeRadius: 0
 --- !u!1 &402960449
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &402960450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1129,7 +1156,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664332036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.149, y: -4.49, z: -3.4204998}
+  m_LocalPosition: {x: -4.05, y: -3.61, z: -3.4204998}
   m_LocalScale: {x: 25.885607, y: 0.70747703, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1606,6 +1633,7 @@ GameObject:
   - component: {fileID: 1229995840}
   - component: {fileID: 1229995841}
   - component: {fileID: 1229995842}
+  - component: {fileID: 1229995843}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1691,7 +1719,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229995836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.41, z: 0}
+  m_LocalPosition: {x: -2.72, y: -1.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1710,10 +1738,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009594571, y: 0.007675767}
+  m_Offset: {x: -0.01990056, y: 0.43110907}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 0.41, y: 0.82}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
@@ -1721,7 +1749,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.21918917, y: 0.814053}
+  m_Size: {x: 0.2806964, y: 0.7803948}
   m_EdgeRadius: 0
 --- !u!114 &1229995841
 MonoBehaviour:
@@ -1735,7 +1763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e060adcbdd289343addf53467aff1b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   fallingLimit: 7
+  fallingDown: 0
 --- !u!114 &1229995842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1749,6 +1779,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+--- !u!95 &1229995843
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1229995836}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 712f9a20e51d94048b78893eb9159015, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1585174275
 GameObject:
   m_ObjectHideFlags: 0
